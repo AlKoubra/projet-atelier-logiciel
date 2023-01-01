@@ -24,7 +24,11 @@ pipeline {
                         //Run maven on Unix agent
                         steps
                         {
-                           sh 'mvn sonar:sonar'
+                        withSonarQubeEnv('Sonarqube')
+                        {
+                             sh 'mvn sonar:sonar'
+                        }
+
                         }
                 }
 
